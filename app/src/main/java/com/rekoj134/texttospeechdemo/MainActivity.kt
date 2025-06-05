@@ -1,11 +1,10 @@
 package com.rekoj134.texttospeechdemo
 
-import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.widget.Button
 import android.widget.EditText
-import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var ed1: EditText
     private lateinit var textviewLanguage: TextView
     private lateinit var b1: Button
-    private lateinit var selectLanguage: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,18 +26,15 @@ class MainActivity : AppCompatActivity() {
 
         speak = TextToSpeech(applicationContext) { status ->
             if (status != TextToSpeech.ERROR) {
-                speak?.language = Locale.US
+                speak?.language = Locale.ENGLISH
             }
         }
 
         b1.setOnClickListener {
-            val toSpeak = ed1.text.toString()
-            Toast.makeText(applicationContext, toSpeak, Toast.LENGTH_SHORT).show()
-            speak?.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null, null)
-        }
-
-        selectLanguage.setOnClickListener {
-
+//            val toSpeak = ed1.text.toString()
+//            Toast.makeText(applicationContext, toSpeak, Toast.LENGTH_SHORT).show()
+//            speak?.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null, null)
+            startActivity(Intent(this@MainActivity, SpeechToTextActivity::class.java))
         }
     }
 

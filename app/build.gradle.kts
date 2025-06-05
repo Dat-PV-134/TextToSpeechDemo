@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation("net.gotev:speech:1.6.2")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
